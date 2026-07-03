@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="Shaunebu.MAUI.Navigation.Sample.Public.TestShellStep3"
+       FlyoutBehavior="Disabled">
+
+    <!--
+        ═══════════════════════════════════════════════════════════════════
+        FRAMEWORK ISOLATION: STEP 3
+        ═══════════════════════════════════════════════════════════════════
+
+        Configuration:
+        - Shell with FlyoutBehavior="Disabled"
+        - Single ShellContent
+        - Uses RAW ContentPage (not custom page type)
+
+        Purpose:
+        Test whether custom LoginPage triggers Shell renderer failure.
+
+        Expected:
+        - If this SUCCEEDS: LoginPage has something that breaks Shell
+        - If this CRASHES: Any page triggers Shell Android renderer bug
+
+        Previous Results:
+        - STEP 1 (ContentPage no Shell): [RESULT TO BE FILLED]
+        - STEP 2 (Shell + LoginPage): [RESULT TO BE FILLED]
+
+        ═══════════════════════════════════════════════════════════════════
+    -->
+
+    <!-- Framework ContentPage - simplest possible page type -->
+    <ShellContent ContentTemplate="{DataTemplate ContentPage}" />
+
+</Shell>

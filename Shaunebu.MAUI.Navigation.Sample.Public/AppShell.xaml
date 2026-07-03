@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:Shaunebu.MAUI.Navigation.Sample.Public.Pages.Debug"
+       xmlns:auth="clr-namespace:Shaunebu.MAUI.Navigation.Sample.Public.Pages.Auth"
+       xmlns:main="clr-namespace:Shaunebu.MAUI.Navigation.Sample.Public.Pages.Main"
+       xmlns:shared="clr-namespace:Shaunebu.MAUI.Navigation.Sample.Public.Pages.Shared"
+       x:Class="Shaunebu.MAUI.Navigation.Sample.Public.AppShell"
+       Shell.NavBarIsVisible="False"
+       FlyoutBehavior="Disabled">
+
+    <!--
+        ═══════════════════════════════════════════════════════════════════════════════
+        ROOT CAUSE FIX: FlyoutBehavior="Disabled" added to work around MAUI bug
+        ═══════════════════════════════════════════════════════════════════════════════
+
+        Issue: ShellFlyoutTemplatedContentRenderer.LoadView crashes with NullReferenceException
+               on Android when Shell has no explicit Flyout elements (FlyoutHeader/FlyoutContent).
+
+        Root Cause: MAUI Shell Android renderer creates Flyout renderer even when not needed,
+                   and the renderer doesn't check for null before accessing Flyout properties.
+
+        Evidence: Systematic binary isolation proved:
+          - STEP 1: ContentPage (no Shell) → SUCCESS (MAUI runtime healthy)
+          - STEP 2: Shell with FlyoutBehavior="Disabled" → SUCCESS (crash bypassed)
+
+        Fix: Adding FlyoutBehavior="Disabled" prevents MAUI from creating the Flyout renderer,
+             which eliminates the null reference crash.
+
+        MAUI Bug Filed: [TO BE FILED - Include minimal repro from investigation]
+
+        Workaround: This attribute MUST remain until MAUI fixes the null-check in
+                   ShellFlyoutTemplatedContentRenderer.LoadView
+        ═══════════════════════════════════════════════════════════════════════════════
+    -->
+
+    <!--
+        AppShell acts as the MAUI Shell host.
+        The library's ShellNavigationAdapter resolves Shell.Current internally.
+        Pages are NOT declared as ShellContent here — routes are registered
+        programmatically via AddShaunebuNavigation() in MauiProgram.cs.
+
+        A ContentPage placeholder gives Shell a valid CurrentPage on startup.
+        AppShell.OnAppearing calls ResetToFlowAsync<AuthFlow> to replace it with
+        the real LoginPage root immediately after the window opens.
+    -->
+    <FlyoutItem Title="Showcase">
+        <Tab>
+            <ShellContent Route="startup" ContentTemplate="{DataTemplate ContentPage}" />
+            <!-- Debugger shortcut in the flyout for DEBUG builds. Registered in DI. -->
+        </Tab>
+    </FlyoutItem>
+
+    <!--
+        Flow-scoped routes for Auth and Main. Absolute navigation (e.g. //auth/login)
+        is used by the pipeline for all flow-scoped routes.
+        PrivacyPage is NOT declared here — it is a global shared route (shared/privacy)
+        registered via Routing.RegisterRoute in AppShell.xaml.cs at startup.
+    -->
+    <ShellItem Route="auth">
+        <ShellSection Route="login">
+            <ShellContent Route="login" ContentTemplate="{DataTemplate auth:LoginPage}" />
+        </ShellSection>
+        <ShellSection Route="register">
+            <ShellContent Route="register" ContentTemplate="{DataTemplate auth:RegisterPage}" />
+        </ShellSection>
+    </ShellItem>
+
+    <ShellItem Route="main">
+        <ShellSection Route="home">
+            <ShellContent Route="home" ContentTemplate="{DataTemplate main:HomePage}" />
+        </ShellSection>
+        <ShellSection Route="settings">
+            <ShellContent Route="settings" ContentTemplate="{DataTemplate main:SettingsPage}" />
+        </ShellSection>
+        <ShellSection Route="profile">
+            <ShellContent Route="profile" ContentTemplate="{DataTemplate main:ProfilePage}" />
+        </ShellSection>
+        <ShellSection Route="edit-profile">
+            <ShellContent Route="edit-profile" ContentTemplate="{DataTemplate main:EditProfilePage}" />
+        </ShellSection>
+        <ShellSection Route="product-details">
+            <ShellContent Route="product-details" ContentTemplate="{DataTemplate main:ProductDetailsPage}" />
+        </ShellSection>
+    </ShellItem>
+
+    <MenuItem x:Name="DiagnosticsMenuItem" Text="Diagnostics" Clicked="OnDiagnosticsClicked" />
+
+</Shell>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.MaintenancePage"
+             Title="Maintenance">
+
+    <ScrollView AutomationId="MaintenancePageRoot">
+    <VerticalStackLayout Padding="24" Spacing="16" VerticalOptions="Center">
+
+        <Label Text="🔧 Under Maintenance" FontSize="24" FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <!--
+            Demonstrates: SampleMaintenanceGuard redirect.
+            When IsMaintenanceModeActive is true on the Home page toggle, any navigation
+            attempt is intercepted by SampleMaintenanceGuard which redirects here.
+            This is a guard-driven redirect, not a direct navigation call.
+        -->
+        <Label FontSize="13" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+               Text="You were redirected here by SampleMaintenanceGuard because maintenance mode was active. Tap Retry to disable maintenance mode and return to the app." />
+
+        <!--
+            Retry disables maintenance mode and resets to MainFlow.
+            In production this would re-check a remote feature flag.
+        -->
+        <Button Text="Retry / Exit Maintenance"
+                AutomationId="RetryMaintenanceButton"
+                Command="{Binding RetryCommand}" />
+
+    </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

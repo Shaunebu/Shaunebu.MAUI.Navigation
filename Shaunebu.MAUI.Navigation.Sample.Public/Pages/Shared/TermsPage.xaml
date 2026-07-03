@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Shared.TermsPage"
+             Title="Terms of Service">
+
+    <ScrollView AutomationId="TermsPageRoot">
+        <VerticalStackLayout Padding="24" Spacing="16">
+
+            <Label Text="📋 Terms of Service" FontSize="24" FontAttributes="Bold" />
+
+            <!--
+                Demonstrates: modal navigation.
+                This page is always presented modally via ShowModalAsync<TermsPage>.
+                The ViewModel calls CloseModalAsync to dismiss it — not GoBackAsync —
+                which is the recommended pattern for modal-only pages.
+            -->
+            <Label FontSize="13" TextColor="Gray"
+                   Text="This page was opened modally via ShowModalAsync&lt;TermsPage&gt;. The ViewModel uses CloseModalAsync to dismiss it correctly." />
+
+            <Label Text="Lorem ipsum terms of service text..." FontSize="13" />
+
+            <Button Text="Accept &amp; Close"
+                    AutomationId="AcceptTermsButton"
+                    Command="{Binding CloseCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Debug.DebuggerShellPage"
+             Title="Debugger"
+             BackgroundColor="White">
+
+    <ScrollView AutomationId="DebuggerShellPageRoot">
+        <VerticalStackLayout Padding="16" Spacing="14">
+
+            <!-- ── Header ──────────────────────────────────────────────────── -->
+            <Label Text="Navigation Debugger Shell"
+                   FontAttributes="Bold"
+                   FontSize="20" />
+
+            <!-- ── Attach / Detach ─────────────────────────────────────────── -->
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Host" FontAttributes="Bold" />
+                    <Label x:Name="AttachStatusLabel"
+                           AutomationId="DebuggerAttachStatusLabel"
+                           Text="Detached" />
+                    <HorizontalStackLayout Spacing="8">
+                        <Button Text="Attach"
+                                AutomationId="DebuggerAttachButton"
+                                Clicked="OnAttachClicked" />
+                        <Button Text="Detach"
+                                AutomationId="DebuggerDetachButton"
+                                Clicked="OnDetachClicked" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- ── Session Recorder ───────────────────────────────────────── -->
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Session Recorder" FontAttributes="Bold" />
+                    <Label x:Name="RecordingStatusLabel"
+                           AutomationId="DebuggerRecordingStatusLabel"
+                           Text="Idle" />
+                    <HorizontalStackLayout Spacing="8">
+                        <Button Text="Start"
+                                AutomationId="DebuggerStartSessionButton"
+                                Clicked="OnStartSessionClicked" />
+                        <Button Text="End"
+                                AutomationId="DebuggerEndSessionButton"
+                                Clicked="OnEndSessionClicked" />
+                        <Button Text="Reset"
+                                AutomationId="DebuggerResetSessionButton"
+                                Clicked="OnResetSessionClicked" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- ── Export / Import ────────────────────────────────────────── -->
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Export / Import" FontAttributes="Bold" />
+                    <HorizontalStackLayout Spacing="8">
+                        <Button Text="Export JSON"
+                                AutomationId="DebuggerExportJsonButton"
+                                Clicked="OnExportJsonClicked" />
+                        <Button Text="Export Markdown"
+                                AutomationId="DebuggerExportMarkdownButton"
+                                Clicked="OnExportMarkdownClicked" />
+                        <Button Text="Save JSON to File"
+                                AutomationId="DebuggerSaveJsonFileButton"
+                                Clicked="OnSaveJsonFileClicked" />
+                    </HorizontalStackLayout>
+                    <Label Text="Exported payload:" FontAttributes="Italic" FontSize="12" />
+                    <Editor x:Name="ExportPreviewEditor"
+                            AutomationId="DebuggerExportPreviewEditor"
+                            IsReadOnly="True"
+                            HeightRequest="120"
+                            FontSize="11"
+                            FontFamily="Courier New"
+                            BackgroundColor="#F5F5F5" />
+                    <Button Text="Import from above"
+                            AutomationId="DebuggerImportButton"
+                            Clicked="OnImportClicked" />
+                    <Label x:Name="ImportStatusLabel"
+                           AutomationId="DebuggerImportStatusLabel"
+                           Text="" FontSize="12" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- ── Warnings ───────────────────────────────────────────────── -->
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Runtime Warnings" FontAttributes="Bold" />
+                    <CollectionView x:Name="WarningsCollection"
+                                   AutomationId="DebuggerWarningsCollection"
+                                   HeightRequest="160"
+                                   EmptyView="No warnings.">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="6" Margin="4" BackgroundColor="#FFF3CD">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Code}" FontAttributes="Bold" FontSize="12" />
+                                        <Label Text="{Binding Message}" FontSize="12" />
+                                        <Label Text="{Binding SeverityLabel}" FontSize="11" TextColor="Gray" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- ── Stack Viewer ───────────────────────────────────────────── -->
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Navigation Stack" FontAttributes="Bold" />
+                    <Label x:Name="StackViewerLabel"
+                           AutomationId="DebuggerStackViewerLabel"
+                           Text="(empty)" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- ── Replay Session Viewer ──────────────────────────────────── -->
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Replay Session" FontAttributes="Bold" />
+                    <Label x:Name="ReplayStatusLabel"
+                           AutomationId="DebuggerReplayStatusLabel"
+                           Text="No session loaded." />
+                    <Label x:Name="ReplayFrameLabel"
+                           AutomationId="DebuggerReplayFrameLabel"
+                           Text="Frame: —" FontSize="12" />
+                    <HorizontalStackLayout Spacing="8">
+                        <Button Text="Load Session"
+                                AutomationId="DebuggerReplayLoadButton"
+                                Clicked="OnReplayLoadClicked" />
+                        <Button Text="▶ Play"
+                                AutomationId="DebuggerReplayPlayButton"
+                                Clicked="OnReplayPlayClicked" />
+                        <Button Text="⏸ Pause"
+                                AutomationId="DebuggerReplayPauseButton"
+                                Clicked="OnReplayPauseClicked" />
+                        <Button Text="⏹ Stop"
+                                AutomationId="DebuggerReplayStopButton"
+                                Clicked="OnReplayStopClicked" />
+                    </HorizontalStackLayout>
+                    <CollectionView x:Name="ReplayFramesCollection"
+                                   AutomationId="DebuggerReplayFramesCollection"
+                                   HeightRequest="180"
+                                   EmptyView="No frames.">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="6" Margin="4">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Operation.OperationId}" FontAttributes="Bold" FontSize="12" />
+                                        <Label Text="{Binding Operation.Route}" FontSize="12" />
+                                        <Label Text="{Binding Operation.StartedAt}" FontSize="11" TextColor="Gray" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- ── Refresh all ────────────────────────────────────────────── -->
+            <Button Text="Refresh All"
+                    AutomationId="DebuggerRefreshAllButton"
+                    Clicked="OnRefreshAllClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

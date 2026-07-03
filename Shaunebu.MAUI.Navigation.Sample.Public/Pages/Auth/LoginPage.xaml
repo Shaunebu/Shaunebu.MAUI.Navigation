@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Auth.LoginPage"
+             Title="Login">
+
+    <ScrollView AutomationId="LoginPageRoot">
+    <VerticalStackLayout Padding="32" Spacing="16" VerticalOptions="Center">
+
+        <Label Text="🔐 Shaunebu Navigation Sample"
+               FontSize="22" FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Label Text="Sign in to continue"
+               FontSize="14" TextColor="Gray"
+               HorizontalOptions="Center" />
+
+        <Entry x:Name="UsernameEntry"
+               AutomationId="UsernameEntry"
+               Placeholder="Username (any value)"
+               Text="{Binding Username}" />
+
+        <Entry x:Name="PasswordEntry"
+               AutomationId="PasswordEntry"
+               Placeholder="Password (any value)"
+               IsPassword="True"
+               Text="{Binding Password}" />
+
+        <!-- Demonstrates: typed navigation with loading overlay -->
+        <Button Text="Login"
+                AutomationId="LoginButton"
+                Command="{Binding LoginCommand}"
+                IsEnabled="{Binding IsNotBusy}" />
+
+        <!-- Demonstrates: typed navigation to RegisterPage -->
+        <Button Text="Create Account"
+                AutomationId="CreateAccountButton"
+                Command="{Binding GoToRegisterCommand}"
+                Style="{StaticResource SecondaryButton}" />
+
+        <!-- Demonstrates: modal navigation -->
+        <Button Text="View Privacy Policy (Modal)"
+                AutomationId="OpenPrivacyModalButton"
+                Command="{Binding OpenPrivacyModalCommand}"
+                Style="{StaticResource SecondaryButton}" />
+
+        <!-- Status label -->
+        <Label Text="{Binding StatusMessage}"
+               AutomationId="StatusMessageLabel"
+               TextColor="Red"
+               HorizontalOptions="Center"
+               IsVisible="{Binding HasStatusMessage}" />
+
+    </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

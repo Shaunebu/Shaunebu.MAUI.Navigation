@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Main.EditProfilePage"
+             Title="Edit Profile">
+
+    <ScrollView AutomationId="EditProfilePageRoot">
+    <VerticalStackLayout Padding="24" Spacing="16" VerticalOptions="Center">
+
+        <Label Text="✏️ Edit Profile" FontSize="24" FontAttributes="Bold" />
+
+        <!--
+            Demonstrates: UnsavedChangesGuard.
+            Editing this field sets HasUnsavedChanges = true on the ViewModel.
+            Tapping Back will trigger EditProfileUnsavedChangesGuard which shows a
+            confirmation dialog before allowing navigation away.
+        -->
+        <Label Text="Change the name below, then tap Back to trigger the unsaved-changes guard."
+               TextColor="Gray" FontSize="12" />
+
+        <Entry AutomationId="DisplayNameEntry"
+               Placeholder="Display name"
+               Text="{Binding DisplayName}" />
+
+        <!-- Save clears the dirty flag — Back will now succeed without a prompt -->
+        <Button Text="Save Changes"
+                AutomationId="SaveChangesButton"
+                Command="{Binding SaveCommand}" />
+
+        <!--
+            Back navigation respects guards (RespectGuards = true in the ViewModel).
+            If HasUnsavedChanges is true the guard will ask the user to confirm.
+        -->
+        <Button Text="← Back"
+                AutomationId="BackButton"
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource SecondaryButton}" />
+
+    </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,13 @@
+using Shaunebu.MAUI.Navigation.Sample.Public.ViewModels.Main;
+
+namespace Shaunebu.MAUI.Navigation.Sample.Public.Pages.Main;
+
+[NavigationRoute("main/profile", Flow = "Main")]
+public sealed partial class ProfilePage : ContentPage
+{
+    public ProfilePage(ProfileViewModel viewModel)
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
+    }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Main.SettingsPage"
+             Title="Settings">
+
+    <ScrollView AutomationId="SettingsPageRoot">
+    <VerticalStackLayout Padding="24" Spacing="16" VerticalOptions="Center">
+
+        <Label Text="⚙️ Settings" FontSize="24" FontAttributes="Bold" />
+
+        <Label Text="{Binding Info}" FontSize="12" TextColor="Gray" />
+
+        <!-- Demonstrates: INavigationAware.OnNavigatedToAsync was called -->
+        <Label Text="(Maintenance guard was bypassed — you reached this page)"
+               FontSize="12" TextColor="Green" />
+
+        <!-- Demonstrates: typed back navigation -->
+        <Button Text="← Back"
+                AutomationId="BackButton"
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource SecondaryButton}" />
+
+        <!-- DEBUG-only: opens the Navigation Debugger Shell for in-app diagnostics -->
+        <Button Text="🔍 Open Debugger Shell (DEBUG only)"
+                AutomationId="OpenDebuggerShellButton"
+                Command="{Binding OpenDebuggerShellCommand}"
+                IsVisible="{Binding IsDebuggerAvailable}"
+                BackgroundColor="#5C6BC0"
+                TextColor="White" />
+
+    </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

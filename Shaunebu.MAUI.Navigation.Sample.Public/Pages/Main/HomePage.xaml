@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Main.HomePage"
+             Title="Home">
+
+    <ScrollView AutomationId="HomePageRoot">
+        <VerticalStackLayout Padding="24" Spacing="12">
+
+            <Label Text="🏠 Home" FontSize="24" FontAttributes="Bold" />
+            <Label Text="Demonstrates: typed navigation, flow switching, overlays, diagnostics."
+                   TextColor="Gray" FontSize="12" />
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,8" />
+
+            <!-- Typed navigation -->
+            <Button Text="Go to Settings" AutomationId="GoToSettingsButton" Command="{Binding GoToSettingsCommand}" />
+            <Button Text="Go to Profile" AutomationId="GoToProfileButton" Command="{Binding GoToProfileCommand}" />
+
+            <!-- Typed navigation with parameters -->
+            <Button Text="View Product Details (with parameters)" AutomationId="GoToProductDetailsButton" Command="{Binding GoToProductDetailsCommand}" />
+
+            <!-- Shared PrivacyPage — resolves to main/privacy route -->
+            <Button Text="Privacy Policy (Main flow route)"
+                    AutomationId="OpenPrivacyButton"
+                    Command="{Binding OpenPrivacyCommand}"
+                    Style="{StaticResource SecondaryButton}" />
+
+            <!-- Modal navigation -->
+            <Button Text="Open Terms (Modal)"
+                    AutomationId="OpenTermsModalButton"
+                    Command="{Binding OpenTermsModalCommand}"
+                    Style="{StaticResource SecondaryButton}" />
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,8" />
+
+            <!-- Overlay demos -->
+            <Label Text="Overlay Demos" FontAttributes="Bold" />
+            <Button Text="Show Loading Overlay (2s)" AutomationId="ShowLoadingButton" Command="{Binding ShowLoadingCommand}" />
+            <Button Text="Show No-Internet Overlay (2s)" AutomationId="ShowNoInternetButton" Command="{Binding ShowNoInternetCommand}" />
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,8" />
+
+            <!-- Stack inspection -->
+            <Label Text="Navigation Stack" FontAttributes="Bold" />
+            <Label Text="{Binding StackInfo}" AutomationId="StackInfoLabel" FontSize="11" TextColor="DimGray" />
+            <Button Text="Refresh Stack Info" AutomationId="RefreshStackInfoButton" Command="{Binding RefreshStackInfoCommand}"
+                    Style="{StaticResource SecondaryButton}" />
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,8" />
+
+            <!-- Maintenance mode toggle (demo guard) -->
+            <Label Text="Guards Demo" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="Maintenance mode:" VerticalOptions="Center" />
+                <Switch AutomationId="MaintenanceModeSwitch" IsToggled="{Binding IsMaintenanceModeActive}" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <Label Text="(Toggle on, then tap Settings to see guard redirect)"
+                   FontSize="11" TextColor="Gray" />
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,8" />
+
+            <!-- Flow switching / logout -->
+            <Button Text="Logout (Reset to Auth flow)"
+                    AutomationId="LogoutButton"
+                    Command="{Binding LogoutCommand}"
+                    BackgroundColor="Salmon" TextColor="White" />
+
+            <!-- ═══ Debugger Performance Counters (DEBUG builds only) ════════════ -->
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,8" />
+            <Label Text="🔬 Debugger Perf Counters (DEBUG only)" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="Sample Counters"
+                        AutomationId="SamplePerfButton"
+                        Command="{Binding ShowPerfReportCommand}"
+                        Style="{StaticResource SecondaryButton}" />
+                <Button Text="Reset Counters"
+                        AutomationId="ResetPerfButton"
+                        Command="{Binding ResetPerfCountersCommand}"
+                        Style="{StaticResource SecondaryButton}" />
+            </HorizontalStackLayout>
+            <Label Text="{Binding PerfReport}"
+                   AutomationId="PerfReportLabel"
+                   FontSize="10"
+                   FontFamily="Courier New"
+                   TextColor="DimGray" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

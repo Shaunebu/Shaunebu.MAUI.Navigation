@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Shared.PrivacyPage"
+             Title="Privacy Policy">
+
+    <ScrollView AutomationId="PrivacyPageRoot">
+        <VerticalStackLayout Padding="24" Spacing="16">
+
+            <Label Text="🔒 Privacy Policy" FontSize="24" FontAttributes="Bold" />
+
+            <!--
+                Demonstrates: shared page reused across Auth and Main flows.
+                The library resolves the correct flow-scoped route automatically:
+                  - Auth flow  → auth/privacy
+                  - Main flow  → main/privacy
+                Back navigation is deterministic regardless of which flow called this page.
+            -->
+            <Label FontSize="13" TextColor="Gray"
+                   Text="This page is registered under both 'auth/privacy' and 'main/privacy'. The library resolves the correct route based on the current active flow. Back navigation returns you to the correct caller without stack corruption." />
+
+            <Label Text="Lorem ipsum privacy policy text..." FontSize="13" />
+
+            <!--
+                GoBackAsync handles both:
+                  - Standard push pop (back to Register / Home).
+                  - Modal dismiss (back from Login's 'View Privacy Policy (Modal)' button).
+                The library picks the correct strategy automatically.
+            -->
+            <Button Text="Close / Back"
+                    AutomationId="ClosePrivacyButton"
+                    Command="{Binding CloseCommand}"
+                    Style="{StaticResource SecondaryButton}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

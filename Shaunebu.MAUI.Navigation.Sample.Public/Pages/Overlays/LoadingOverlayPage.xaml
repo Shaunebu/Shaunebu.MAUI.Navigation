@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Overlays.LoadingOverlayPage"
+             BackgroundColor="#80000000"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False">
+
+    <!--
+        Sample loading overlay. Rendered modally above Shell content.
+        BackgroundColor is semi-transparent so the page beneath remains visible.
+        InputTransparent=False on the root so taps on the dimmed area are consumed.
+    -->
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Border AutomationId="LoadingOverlayPanel"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 12"
+                Padding="40,28"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                MinimumWidthRequest="200">
+            <VerticalStackLayout Spacing="20" HorizontalOptions="Center">
+                <ActivityIndicator IsRunning="True"
+                                   Color="{AppThemeBinding Light=#512BD4, Dark=#AC99EA}"
+                                   AutomationId="LoadingSpinner" />
+                <Label x:Name="MessageLabel"
+                       AutomationId="LoadingMessageLabel"
+                       Text="Loading…"
+                       HorizontalOptions="Center"
+                       FontSize="14" />
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+
+</ContentPage>

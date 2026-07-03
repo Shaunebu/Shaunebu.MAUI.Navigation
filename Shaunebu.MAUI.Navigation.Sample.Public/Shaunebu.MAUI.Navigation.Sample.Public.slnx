@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Shaunebu.MAUI.Navigation.Sample.Public.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

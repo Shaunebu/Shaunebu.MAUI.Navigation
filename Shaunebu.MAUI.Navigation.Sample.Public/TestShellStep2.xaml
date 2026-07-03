@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:auth="clr-namespace:Shaunebu.MAUI.Navigation.Sample.Public.Pages.Auth"
+       x:Class="Shaunebu.MAUI.Navigation.Sample.Public.TestShellStep2"
+       FlyoutBehavior="Disabled">
+
+    <!--
+        ═══════════════════════════════════════════════════════════════════
+        FRAMEWORK ISOLATION: STEP 2
+        ═══════════════════════════════════════════════════════════════════
+
+        Configuration:
+        - Shell with FlyoutBehavior="Disabled"
+        - Single ShellContent
+        - Uses LoginPage DataTemplate
+
+        Purpose:
+        Test whether Android Flyout renderer is the crash source.
+
+        Expected:
+        - If this SUCCEEDS: Flyout renderer is the issue
+        - If this CRASHES: Core Shell handler has the problem
+
+        Previous Results:
+        - STEP 1 (ContentPage): [RESULT TO BE FILLED]
+
+        ═══════════════════════════════════════════════════════════════════
+    -->
+
+    <ShellContent ContentTemplate="{DataTemplate auth:LoginPage}" />
+
+</Shell>

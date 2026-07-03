@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Overlays.NoInternetOverlayPage"
+             BackgroundColor="#CC000000"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False">
+
+    <!--
+        Sample no-internet overlay. Rendered modally above Shell content.
+        Darker background than loading overlay so it reads as a blocking state.
+    -->
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Border AutomationId="NoInternetOverlayPanel"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 12"
+                Padding="40,28"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                MinimumWidthRequest="240">
+            <VerticalStackLayout Spacing="16" HorizontalOptions="Center">
+                <Label Text="📡"
+                       FontSize="40"
+                       HorizontalOptions="Center"
+                       AutomationId="NoInternetIcon" />
+                <Label x:Name="MessageLabel"
+                       AutomationId="NoInternetMessageLabel"
+                       Text="No internet connection."
+                       HorizontalOptions="Center"
+                       FontSize="14" />
+                <Label Text="(Auto-hides after demo period)"
+                       FontSize="11"
+                       TextColor="Gray"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+
+</ContentPage>

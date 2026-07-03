@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Auth.RegisterPage"
+             Title="Create Account">
+
+    <ScrollView AutomationId="RegisterPageRoot">
+    <VerticalStackLayout Padding="32" Spacing="16" VerticalOptions="Center">
+
+        <Label Text="Create Account" FontSize="22" FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Entry AutomationId="FullNameEntry" Placeholder="Full name" Text="{Binding FullName}" />
+        <Entry AutomationId="EmailEntry" Placeholder="Email" Text="{Binding Email}" Keyboard="Email" />
+        <Entry AutomationId="PasswordEntry" Placeholder="Password" IsPassword="True" Text="{Binding Password}" />
+
+        <Button Text="Register"
+                AutomationId="RegisterButton"
+                Command="{Binding RegisterCommand}"
+                IsEnabled="{Binding IsNotBusy}" />
+
+        <!-- Demonstrates: GoBackAsync -->
+        <Button Text="Back to Login"
+                AutomationId="BackToLoginButton"
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource SecondaryButton}" />
+
+        <!-- Demonstrates: shared PrivacyPage via Auth flow route -->
+        <Button Text="View Privacy Policy"
+                AutomationId="OpenPrivacyButton"
+                Command="{Binding OpenPrivacyCommand}"
+                Style="{StaticResource SecondaryButton}" />
+
+    </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

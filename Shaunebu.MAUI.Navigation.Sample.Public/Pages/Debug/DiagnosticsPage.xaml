@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shaunebu.MAUI.Navigation.Sample.Public.Pages.Debug.DiagnosticsPage"
+             Title="Diagnostics"
+             BackgroundColor="White">
+    <ScrollView AutomationId="DiagnosticsPageRoot">
+        <VerticalStackLayout Padding="16" Spacing="12">
+            <Label Text="Navigation Diagnostics" FontAttributes="Bold" FontSize="20" />
+
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout>
+                    <Label Text="Current Flow" FontAttributes="Bold"/>
+                    <Label x:Name="FlowLabel" AutomationId="DiagnosticsFlowLabel" Text="(unknown)"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout>
+                    <Label Text="Navigation Stack" FontAttributes="Bold"/>
+                    <Label x:Name="NavStackLabel" AutomationId="DiagnosticsNavStackLabel" Text="(empty)"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout>
+                    <Label Text="Modal Stack" FontAttributes="Bold"/>
+                    <Label x:Name="ModalStackLabel" AutomationId="DiagnosticsModalStackLabel" Text="(empty)"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout>
+                    <Label Text="Visible Overlays" FontAttributes="Bold"/>
+                    <Label x:Name="OverlaysLabel" AutomationId="DiagnosticsOverlaysLabel" Text="(none)"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame HasShadow="True" Padding="10">
+                <VerticalStackLayout>
+                    <Label Text="Recent Operations" FontAttributes="Bold"/>
+                    <CollectionView x:Name="OpsCollection" HeightRequest="200">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="6" Margin="4">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Summary}" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Route}" />
+                                        <Label Text="{Binding FailureReason}" />
+                                        <Label Text="{Binding OccurredAt}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Refresh" AutomationId="DiagnosticsRefreshButton" Clicked="OnRefreshClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
