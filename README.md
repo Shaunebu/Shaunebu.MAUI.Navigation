@@ -34,6 +34,8 @@
 [![Documentation](https://img.shields.io/badge/Documentation-GitHub-181717?logo=github)](https://github.com/shaunebu/Shaunebu.MAUI.Navigation)
 [![Support](https://img.shields.io/badge/Support-Buy%20me%20a%20Coffee-FFDD00?logo=buymeacoffee)](https://buymeacoffee.com/jcz65te)
 
+
+![https://jpdblog.blob.core.windows.net/apps/Libraries/VsixDebugNavigation.png](https://jpdblog.blob.core.windows.net/apps/Libraries/VsixDebugNavigation.png)
 ---
 
 ## Table of Contents
