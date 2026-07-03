@@ -25,6 +25,10 @@ After installation, open the Navigation Inspector from the Visual Studio menu:
 
 **View → Other Windows → Navigation Session Inspector**
 
+
+ ![https://jpdblog.blob.core.windows.net/apps/Libraries/NavigationVsix.gif](https://jpdblog.blob.core.windows.net/apps/Libraries/NavigationVsix.gif)
+
+
 Or use the keyboard shortcut if you assigned one during install.
 
 ---
