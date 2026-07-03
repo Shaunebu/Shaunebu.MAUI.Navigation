@@ -4,6 +4,36 @@
 > **A commercial-grade, type-safe navigation platform for .NET MAUI.**  
 > Built around structured results, guard pipelines, named flows, overlay management, compile-time code generation, and a fully integrated Visual Studio debugger extension.
 
+![NuGet](https://img.shields.io/nuget/v/Shaunebu.MAUI.Navigation?label=NuGet&color=blue)
+![Downloads](https://img.shields.io/nuget/dt/Shaunebu.MAUI.Navigation?label=Downloads)
+![Platform](https://img.shields.io/badge/Platform-.NET%20MAUI-512BD4?logo=dotnet)
+![Status](https://img.shields.io/badge/Status-Preview-orange)
+![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2022-5C2D91?logo=visualstudio)
+
+![Source Generators](https://img.shields.io/badge/Source%20Generators-Enabled-8A2BE2)
+![Roslyn](https://img.shields.io/badge/Roslyn-Analyzers%20%2B%20CodeFixes-512BD4)
+![Live Debugger](https://img.shields.io/badge/Live-Debugger-red)
+![Diagnostics](https://img.shields.io/badge/Diagnostics-JSON%20%7C%20Markdown-success)
+![Architecture](https://img.shields.io/badge/Architecture-Type--Safe-success)
+
+![Platforms](https://img.shields.io/badge/Platforms-Android%20%7C%20iOS%20%7C%20Windows%20%7C%20macOS-00BFFF)
+![Language](https://img.shields.io/badge/Language-C%23-239120?logo=csharp)
+![MAUI](https://img.shields.io/badge/.NET%20MAUI-8%2B-512BD4)
+
+![Navigation](https://img.shields.io/nuget/v/Shaunebu.MAUI.Navigation?label=Navigation&logo=nuget)
+![Debugger](https://img.shields.io/nuget/v/Shaunebu.MAUI.Navigation.Debugger?label=Debugger&logo=nuget)
+![Generators](https://img.shields.io/nuget/v/Shaunebu.MAUI.Navigation.Generators?label=Generators&logo=nuget)
+![Analyzers](https://img.shields.io/nuget/v/Shaunebu.MAUI.Navigation.Analyzers?label=Analyzers&logo=nuget)
+![CodeFixes](https://img.shields.io/nuget/v/Shaunebu.MAUI.Navigation.CodeFixes?label=CodeFixes&logo=nuget)
+
+[![VSIX](https://img.shields.io/badge/VSIX-Available-5C2D91?logo=visualstudio)](https://marketplace.visualstudio.com/items?itemName=IngJorgePeralesDiaz.ShaunebuMAUINavigation)
+[![Live Monitoring](https://img.shields.io/badge/Live-Monitoring-red)](https://marketplace.visualstudio.com/items?itemName=IngJorgePeralesDiaz.ShaunebuMAUINavigation)
+
+[![NuGet](https://img.shields.io/badge/NuGet-Packages-004880?logo=nuget)](https://www.nuget.org/packages/Shaunebu.MAUI.Navigation/)
+[![Marketplace](https://img.shields.io/badge/Visual%20Studio-Marketplace-5C2D91?logo=visualstudio)](https://marketplace.visualstudio.com/items?itemName=IngJorgePeralesDiaz.ShaunebuMAUINavigation)
+[![Documentation](https://img.shields.io/badge/Documentation-GitHub-181717?logo=github)](https://github.com/shaunebu/Shaunebu.MAUI.Navigation)
+[![Support](https://img.shields.io/badge/Support-Buy%20me%20a%20Coffee-FFDD00?logo=buymeacoffee)](https://buymeacoffee.com/jcz65te)
+
 ---
 
 ## Table of Contents
