@@ -8,7 +8,7 @@
 ![Downloads](https://img.shields.io/nuget/dt/Shaunebu.MAUI.Navigation?label=Downloads)
 ![Platform](https://img.shields.io/badge/Platform-.NET%20MAUI-512BD4?logo=dotnet)
 ![Status](https://img.shields.io/badge/Status-Preview-orange)
-![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2022-5C2D91?logo=visualstudio)
+![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2026-5C2D91?logo=visualstudio)
 
 ![Source Generators](https://img.shields.io/badge/Source%20Generators-Enabled-8A2BE2)
 ![Roslyn](https://img.shields.io/badge/Roslyn-Analyzers%20%2B%20CodeFixes-512BD4)
